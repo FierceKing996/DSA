@@ -1,17 +1,15 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-        generate(nums,0,new ArrayList<>() , result);
+        List<List<Integer>> result  = new ArrayList<>();
+        generate(0,new ArrayList<>(), result , nums);
         return result;
     }
-    public void generate(int[] nums, int index, List<Integer> current, List<List<Integer>> result){
-         if(index==nums.length){
-            result.add(new ArrayList<>(current));
-            return;
-         }
-         generate(nums,index+1,current,result);
-         current.add(nums[index]);
-         generate(nums, index + 1, current, result);
-         current.remove(current.size() - 1);
+    public void generate(int index , List<Integer> current , List<List<Integer>> result, int[] nums){
+        result.add(new ArrayList<>(current));
+        for(int i = index;i <nums.length;i++){
+            current.add(nums[i]);
+            generate(i+1,current,result,nums);
+            current.remove(current.size()-1);
+        }
     }
 }
