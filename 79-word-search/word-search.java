@@ -3,7 +3,6 @@ class Solution {
         int m = board.length;
         int n = board[0].length;
 
-        // Try to start DFS from each cell
         for (int i = 0; i < m; i++) {
             for (int j = 0; j < n; j++) {
                 if (backtrack(board, word, i, j, 0)) {
